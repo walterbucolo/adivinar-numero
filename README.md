@@ -25,6 +25,5 @@ Adivinador: 1234...
 Pensador: respuesta 4 bien, 0 regular (ya que todo los números están en el lugar correcto). 
 JUEGO TERMINADO!
 
-#Requerimientos
-
-    Solo usa la librería estándar de Python.
+## Requerimientos
+   Librería estándar de Python.
