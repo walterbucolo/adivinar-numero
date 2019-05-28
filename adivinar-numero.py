@@ -35,7 +35,19 @@ class Number:
                   self.correct=correct
                   self.regular=regular
                   return False
-      
+      def checkNumberAlt(self, numberOne, numberTwo):
+            correct, regular = 0,0
+            for x in numberOne:
+                  for y in numberTwo:
+                        if x == y: #Check if a digit belongs to the number
+                              if numberOne.index(x) == numberTwo.index(y) : #Check if it's the same position
+                                    correct+=1
+                              else:
+                                    regular+=1
+            self.correct=correct
+            self.regular=regular
+            resp=(correct, regular)
+            return resp 
       def validateNumber(self,number):
             #limited to numbers
             if str.isdigit(number)==False:
@@ -59,7 +71,33 @@ class Number:
             return res
 
       def guessNumber(self, dic):
-            pass
+            self.dictionary.append(dic.copy())
+            numberInt = self.convertList(dic['number'])
+            matches = False
+            while matches == False:
+                  c=0
+                  valid = False
+                  while valid == False:
+                        numberInt += 1
+                        number = str(numberInt)
+                        print("numberstr:", number, "numberint", numberInt)
+                        if len(number) == 3: #validar 4 digitos
+                              number ='0'+ number
+                        if number == '9999': #Validar 4 digitos
+                              numberInt = 123
+                              number = "0123"
+                        checkNoDuplicates = self.validateNumber(number)
+                        if checkNoDuplicates == True:
+                              valid = True
+                  for x in self.dictionary:
+                        numberArray=[int(digit) for digit in number]
+                        resp = self.checkNumberAlt(x['number'],numberArray)
+                        if resp[0] == x['correct'] and resp[1] == x['regular']:
+                              c += 1
+                        if c == len(self.dictionary):
+                              matches = True
+                              return numberArray
+            return None 
              
             
 class Agent:
@@ -92,6 +130,9 @@ class Agent:
                               Dict['correct']=inCorrect
                               Dict['regular']=inRegular
                               newNumber=self.objectNumber.guessNumber(Dict)
+                              if newNumber == None:
+                                    print ("No pude encontrar el número. ¿Habrás confundido algún ingreso de datos?")
+                                    break
                   except ValueError:
                         print ('Ingresa un número válido')
             print("Bien jugado!")
