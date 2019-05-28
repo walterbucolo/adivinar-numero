@@ -9,6 +9,7 @@ class Number:
             self.regular = 0
             self.correct = 0
             self.dictionary=[]
+      
       # Random number
       def createNumber(self):
             number=[]
@@ -16,26 +17,10 @@ class Number:
                   digit=random.randrange(0, 9)
                   if digit not in number: #Check if a digit not in number
                         number.append(digit)
-            print (number)
             self.number=number
             return number
       
-      def checkNumber(self, number):
-            if self.number==number:
-                  return True
-            else:
-                  correct, regular = 0,0
-                  for x in self.number:
-                        for y in number:
-                              if x == y: #Check if a digit belongs to the number
-                                    if self.number.index(x) == number.index(y) : #Check if it's the same position
-                                          correct+=1
-                                    else:
-                                          regular+=1
-                  self.correct=correct
-                  self.regular=regular
-                  return False
-      def checkNumberAlt(self, numberOne, numberTwo):
+      def checkNumber(self, numberOne, numberTwo):
             correct, regular = 0,0
             for x in numberOne:
                   for y in numberTwo:
@@ -47,7 +32,8 @@ class Number:
             self.correct=correct
             self.regular=regular
             resp=(correct, regular)
-            return resp 
+            return resp
+
       def validateNumber(self,number):
             #limited to numbers
             if str.isdigit(number)==False:
@@ -80,7 +66,6 @@ class Number:
                   while valid == False:
                         numberInt += 1
                         number = str(numberInt)
-                        print("numberstr:", number, "numberint", numberInt)
                         if len(number) == 3: #validar 4 digitos
                               number ='0'+ number
                         if number == '9999': #Validar 4 digitos
@@ -91,7 +76,7 @@ class Number:
                               valid = True
                   for x in self.dictionary:
                         numberArray=[int(digit) for digit in number]
-                        resp = self.checkNumberAlt(x['number'],numberArray)
+                        resp = self.checkNumber(x['number'],numberArray)
                         if resp[0] == x['correct'] and resp[1] == x['regular']:
                               c += 1
                         if c == len(self.dictionary):
@@ -138,7 +123,7 @@ class Agent:
             print("Bien jugado!")
 
       def agentOne(self):
-            self.objectNumber.createNumber() #Create number
+            number = self.objectNumber.createNumber() #Create number
             #ask for number
             while self.isCorrect == False:
                   inputNumber = input("Por favor, ingresa un número de 4 dígitos: ")
@@ -147,7 +132,10 @@ class Agent:
                         print("Error: {}".format(self.objectNumber.error))
                   else:
                         inputNumberArray=[int(digit) for digit in inputNumber]
-                        self.isCorrect = self.objectNumber.checkNumber(inputNumberArray)    
+                        resp = self.objectNumber.checkNumber(number, inputNumberArray)    
+                        # self.isCorrect
+                        if resp[0] == self.objectNumber.cantDigits:
+                              self.isCorrect = True
                         if self.isCorrect == False:
                               print("El número {} es incorrecto".format(inputNumber))
                               print("Hay {} correctas y {} regulares".format(self.objectNumber.correct, self.objectNumber.regular ))
