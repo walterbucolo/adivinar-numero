@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Agent	../adivinar-numero.py	/^class Agent:$/;"	kind:class	line:108
+Number	../adivinar-numero.py	/^class Number:$/;"	kind:class	line:3
+__init__	../adivinar-numero.py	/^      def __init__(self):$/;"	kind:member	line:111
+__init__	../adivinar-numero.py	/^      def __init__(self):$/;"	kind:member	line:5
+adivinar-numero.py	../adivinar-numero.py	1;"	kind:file	line:1
+adivinarNumero	../adivinar-numero.py	/^      def adivinarNumero(self, dic):$/;"	kind:member	line:74
+agent	../adivinar-numero.py	/^      def agent(self):$/;"	kind:member	line:159
+agentDos	../adivinar-numero.py	/^      def agentDos(self):$/;"	kind:member	line:114
+agentUno	../adivinar-numero.py	/^      def agentUno(self):$/;"	kind:member	line:142
+checkNumber	../adivinar-numero.py	/^      def checkNumber(self, number):$/;"	kind:member	line:23
+checkNumberDos	../adivinar-numero.py	/^      def checkNumberDos(self, numberOne, numberTwo):$/;"	kind:member	line:39
+convertList	../adivinar-numero.py	/^      def convertList(self,list):$/;"	kind:member	line:69
+createNumber	../adivinar-numero.py	/^      def createNumber(self):$/;"	kind:member	line:13
+objectAgent	../adivinar-numero.py	/^objectAgent = Agent()$/;"	kind:variable	line:170
+objectNumber	../adivinar-numero.py	/^      objectNumber = Number()$/;"	kind:variable	line:109
+validateNumber	../adivinar-numero.py	/^      def validateNumber(self,number):$/;"	kind:member	line:52
